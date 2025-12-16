@@ -24,7 +24,9 @@ public class Compiler {
 	static boolean verbose = false;  //-v (adds more verbose output)
 	static boolean console = false;  //-c (leave output to system.out)
 	static boolean light = false;    //-l (for competition)
-	
+	static boolean synchronous = false; //-s or --synchronous
+
+
 	public Compiler(){}
 	
 	public Compiler(ParsingString sb)
@@ -79,6 +81,7 @@ public class Compiler {
 				System.out.println("You should specify a script file!! ");
 				System.out.println("-o [] to specify output directory");
 				System.out.println("-g [] to specify Graphviz directory");
+				System.out.println("-s or --synchronous for synchronous print");
 			}
 			else
 			{
@@ -99,6 +102,8 @@ public class Compiler {
 					
 					if (args[i].equals("-l"))
 						light = true;
+					if (args[i].equals("-s") || args[i].equals("--synchronous"))
+						synchronous = true;
 				}
 				
 				BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(inputDir)));

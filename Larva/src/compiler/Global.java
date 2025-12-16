@@ -510,6 +510,10 @@ public class Global extends Compiler{
 				cl.append("\r\npw = new PrintWriter(\""+Compiler.outputDir.replace("\\", "\\\\")
 					+"/output_"+name+".txt\");\r\n");
 
+			if (Compiler.synchronous)
+				cl.append("\r\npw = new PrintWriter(new java.io.FileOutputStream(\""
+						+ Compiler.outputDir.replace("\\", "\\\\") + "/output_" + name + ".txt\"), true);\r\n");
+
 			cl.append("\r\nroot = new _cls_" + this.name + this.id + "();" +
 					"\r\n_cls_" + this.name + this.id + "_instances.put(root, root);");
 
